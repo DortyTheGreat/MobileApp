@@ -16,7 +16,16 @@
       <SelectionState runConfigName="NoEthernet">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Onboarding">
+      <SelectionState runConfigName="Home">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Login">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Register1">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Register2">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

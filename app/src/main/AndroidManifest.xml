@@ -30,6 +30,15 @@
         <activity
             android:name=".NoEthernet"
             android:exported="true" />
+		<activity
+            android:name=".Home"
+            android:exported="true" />
+		<activity
+            android:name=".Register1"
+            android:exported="true" />
+		<activity
+            android:name=".Register2"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

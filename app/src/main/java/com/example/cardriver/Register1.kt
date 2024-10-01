@@ -8,13 +8,14 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 import android.text.InputType
+import android.widget.CheckBox
 
-class Login : AppCompatActivity() {
+class Register1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_reg1)
 
         // Получаем главный layout с id main
         val mainLayout = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.main)
@@ -28,20 +29,35 @@ class Login : AppCompatActivity() {
 
         // Получаем элементы TextInputEditText внутри TextInputLayout
         val email = findViewById<TextInputEditText>(R.id.textInputEditText_surname)
-        val pass = findViewById<TextInputEditText>(R.id.textInputEditText_date)
+        val pass = findViewById<TextInputEditText>(R.id.textInputEditText_name)
+        val pass_repeat = findViewById<TextInputEditText>(R.id.textInputEditText_date)
 
-        val button_login_google = findViewById<Button>(R.id.button_login_google)
         val button_login = findViewById<Button>(R.id.button_login)
-        val textView_register = findViewById<TextView>(R.id.textView_register)
+
         val pass_hide = findViewById<ImageView>(R.id.pass_hide)
+        val pass_hide2 = findViewById<ImageView>(R.id.pass_hide2)
+        val rules_cb = findViewById<CheckBox>(R.id.rules_checkbox)
+
 
         pass.inputType = 131201
-
+        pass_repeat.inputType = 131201
         pass_hide.setOnClickListener{
             if (pass.inputType == 131201){
                 pass.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+                pass_repeat.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
             }else{
                 pass.inputType = 131201
+                pass_repeat.inputType = 131201
+            }
+        }
+
+        pass_hide2.setOnClickListener{
+            if (pass.inputType == 131201){
+                pass.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+                pass_repeat.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }else{
+                pass.inputType = 131201
+                pass_repeat.inputType = 131201
             }
         }
 
@@ -49,22 +65,32 @@ class Login : AppCompatActivity() {
 
             val ema = email.getText().toString()
             val pas = pass.getText().toString()
+            val pas2 = pass_repeat.getText().toString()
 
-            if (isValidEmail(ema) && isValidPass(pas) ){
-                // TODO: some check in bd...
-                startActivity(Intent(this, Home::class.java))
-                finish()
+            if (!isValidEmail(ema)){
+                Snackbar.make(findViewById(R.id.main), "Некорректный email", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
-        }
 
-        button_login_google.setOnClickListener {
-            // TODO: google auth
-        }
+            if (pas != pas2){
+                Snackbar.make(findViewById(R.id.main), "Пароли должны совпадать", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        textView_register.setOnClickListener{
-            startActivity(Intent(this, Register1::class.java))
+            if (!isValidPass(pas)){
+                Snackbar.make(findViewById(R.id.main), "Пароль некорректный", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (!rules_cb.isChecked()){
+                Snackbar.make(findViewById(R.id.main), "Вы обязаны согласиться с правилами", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            startActivity(Intent(this, Register2::class.java))
             finish()
         }
+
 
 
 
