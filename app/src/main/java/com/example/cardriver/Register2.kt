@@ -17,17 +17,17 @@ class Register2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reg2)
 
-        // Получаем главный layout с id main
+
         val mainLayout = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.main)
 
-        // Устанавливаем listener для обработки системных вставок (system bars)
+
         ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Получаем элементы TextInputEditText внутри TextInputLayout
+
         val surname = findViewById<TextInputEditText>(R.id.textInputEditText_surname)
         val name = findViewById<TextInputEditText>(R.id.textInputEditText_name)
         val name3 = findViewById<TextInputEditText>(R.id.textInputEditText_name3)
@@ -54,7 +54,6 @@ class Register2 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             try {
                 val localDate = LocalDate.parse(_birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
             } catch (e: Exception) {
@@ -66,9 +65,6 @@ class Register2 : AppCompatActivity() {
                 Snackbar.make(findViewById(R.id.main), "Выберите пол", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-
-
 
             //startActivity(Intent(this, Register3::class.java))
             //finish()
