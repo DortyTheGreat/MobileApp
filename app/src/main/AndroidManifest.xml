@@ -32,9 +32,12 @@
             android:exported="true" />
 		<activity
             android:name=".Register1"
-            android:exported="false" />
+            android:exported="true" />
 		<activity
             android:name=".Register2"
+            android:exported="true" />
+        <activity
+            android:name=".Register3"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

@@ -66,8 +66,7 @@ class Register2 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //startActivity(Intent(this, Register3::class.java))
-            //finish()
+            startActivity(Intent(this, Register3::class.java))
         }
 
 

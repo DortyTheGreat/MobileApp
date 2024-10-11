@@ -11,6 +11,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.text.InputType
 
+import androidx.room.*
+import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +57,37 @@ class Login : AppCompatActivity() {
 
             if (isValidEmail(ema) && isValidPass(pas) ){
                 // TODO: some check in bd...
-                startActivity(Intent(this, Home::class.java))
-                finish()
+
+                try {
+
+                    val db = Room.databaseBuilder(
+                        applicationContext,
+                        AppDatabase::class.java, "database-name"
+                    ).allowMainThreadQueries().build()
+
+                    val userDao = db.userDao()
+
+                    val a = userDao.findByName(ema,pas)
+
+                    if (a == null){
+                        Snackbar.make(findViewById(R.id.main), "Oops, no user", Snackbar.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                    if (true){
+                        Snackbar.make(findViewById(R.id.main), " " + a.pass, Snackbar.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                } catch (e: Exception) {
+                    Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+
+
+                //startActivity(Intent(this, Home::class.java))
+                //finish()
             }
         }
 
@@ -63,7 +97,6 @@ class Login : AppCompatActivity() {
 
         textView_register.setOnClickListener{
             startActivity(Intent(this, Register1::class.java))
-            finish()
         }
 
 

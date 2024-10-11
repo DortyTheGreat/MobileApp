@@ -17,8 +17,16 @@ class Register1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reg1)
 
+        R.id.textInputEditText_pass
+
         // Получаем главный layout с id main
         val mainLayout = findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.main)
+
+        val backArrow = findViewById<ImageView>(R.id.backArrow) // Стрелка назад
+
+        backArrow.setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         // Устанавливаем listener для обработки системных вставок (system bars)
         ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
@@ -28,15 +36,15 @@ class Register1 : AppCompatActivity() {
         }
 
         // Получаем элементы TextInputEditText внутри TextInputLayout
-        val email = findViewById<TextInputEditText>(R.id.textInputEditText_surname)
-        val pass = findViewById<TextInputEditText>(R.id.textInputEditText_name)
-        val pass_repeat = findViewById<TextInputEditText>(R.id.textInputEditText_date)
+        val email = findViewById<TextInputEditText>(R.id.textInputEditText_email)
+        val pass = findViewById<TextInputEditText>(R.id.textInputEditText_pass)
+        val pass_repeat = findViewById<TextInputEditText>(R.id.textInputEditText_pass_repeat)
 
         val button_login = findViewById<Button>(R.id.button_login)
 
         val pass_hide = findViewById<ImageView>(R.id.pass_hide)
         val pass_hide2 = findViewById<ImageView>(R.id.pass_hide2)
-        val rules_cb = findViewById<CheckBox>(R.id.rules_checkbox)
+        val rules_cb = findViewById<CheckBox>(R.id.checkBox)
 
 
         pass.inputType = 131201
@@ -88,7 +96,6 @@ class Register1 : AppCompatActivity() {
             }
 
             startActivity(Intent(this, Register2::class.java))
-            finish()
         }
 
 
