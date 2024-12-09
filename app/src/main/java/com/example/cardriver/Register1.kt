@@ -11,6 +11,7 @@ import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
 import android.text.InputType
 import android.widget.CheckBox
+import androidx.room.Room
 
 class Register1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +95,22 @@ class Register1 : AppCompatActivity() {
                 Snackbar.make(findViewById(R.id.main), "Вы обязаны согласиться с правилами", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database-name"
+            ).allowMainThreadQueries().build()
+
+            val userDao = db.userDao()
+
+            val a = userDao.findByName(ema,pas)
+
+            if (!(a == null)){
+                Snackbar.make(findViewById(R.id.main), "Такая почта уже задействована", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            userDao.Add(ema, pas)
 
             startActivity(Intent(this, Register2::class.java))
         }

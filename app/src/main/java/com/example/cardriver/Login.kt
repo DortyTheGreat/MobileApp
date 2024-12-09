@@ -56,7 +56,6 @@ class Login : AppCompatActivity() {
             val pas = pass.getText().toString()
 
             if (isValidEmail(ema) && isValidPass(pas) ){
-                // TODO: some check in bd...
 
                 try {
 
@@ -70,14 +69,13 @@ class Login : AppCompatActivity() {
                     val a = userDao.findByName(ema,pas)
 
                     if (a == null){
-                        Snackbar.make(findViewById(R.id.main), "Oops, no user", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(findViewById(R.id.main), "Такого пользователя нет", Snackbar.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
 
-                    if (true){
-                        Snackbar.make(findViewById(R.id.main), " " + a.pass, Snackbar.LENGTH_SHORT).show()
-                        return@setOnClickListener
-                    }
+
+                    startActivity(Intent(this, Home::class.java))
+
 
                 } catch (e: Exception) {
                     Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()

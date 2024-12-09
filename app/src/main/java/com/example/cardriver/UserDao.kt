@@ -15,6 +15,10 @@ interface UserDao {
             "pass LIKE :pass_ LIMIT 1")
     fun findByName(login_: String, pass_: String): User
 
+    @Query("INSERT INTO user (login, pass)" +
+            "VALUES (:login_, :pass_)")
+    fun Add(login_: String, pass_: String)
+
     @Insert
     fun insertAll(vararg users: User)
 

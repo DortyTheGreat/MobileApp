@@ -99,7 +99,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText_surname"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:isScrollContainer="false"
                     android:singleLine="true" />
 
@@ -135,7 +135,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditText_date"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:isScrollContainer="false"
                     android:password="true"
                     android:singleLine="true" />
