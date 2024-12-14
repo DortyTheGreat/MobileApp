@@ -66,15 +66,15 @@ class Login : AppCompatActivity() {
 
                     val userDao = db.userDao()
 
-                    val a = userDao.findByName(ema,pas)
+                    val a = userDao.findByLoginPass(ema,pas)
 
                     if (a == null){
                         Snackbar.make(findViewById(R.id.main), "Такого пользователя нет", Snackbar.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
 
-
-                    startActivity(Intent(this, Home::class.java))
+                    Global.current_session_email = ema
+                    startActivity(Intent(this, Settings::class.java))
 
 
                 } catch (e: Exception) {

@@ -2,16 +2,19 @@ package com.example.cardriver
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.textfield.TextInputEditText
-import android.widget.Button
-import android.widget.ImageView
-import com.google.android.material.snackbar.Snackbar
-import android.text.InputType
-import android.widget.CheckBox
+import androidx.room.Database
 import androidx.room.Room
+import androidx.room.Room.databaseBuilder
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+
 
 class Register1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,22 +99,34 @@ class Register1 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val db = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, "database-name"
-            ).allowMainThreadQueries().build()
+            try {
+                val db = Room.databaseBuilder(
+                    applicationContext,
+                    AppDatabase::class.java, "database-name"
+                ).allowMainThreadQueries().build()
 
-            val userDao = db.userDao()
+                val userDao = db.userDao()
 
-            val a = userDao.findByName(ema,pas)
+                val a = userDao.findByLogin(ema)
 
-            if (!(a == null)){
-                Snackbar.make(findViewById(R.id.main), "Такая почта уже задействована", Snackbar.LENGTH_SHORT).show()
+                if (!(a == null)) {
+                    Snackbar.make(
+                        findViewById(R.id.main),
+                        "Такая почта уже задействована",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+
+            }catch (e: Exception) {
+                Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            userDao.Add(ema, pas)
+            Global.login = ema;
+            Global.pass = pas;
 
+            //userDao.Add(ema, pas)
             startActivity(Intent(this, Register2::class.java))
         }
 

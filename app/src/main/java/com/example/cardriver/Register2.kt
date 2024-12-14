@@ -66,6 +66,16 @@ class Register2 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            Global.name = _name;
+            Global.surname = _surname;
+            Global.patronymic = name3.getText().toString();
+
+            if (gn_m)
+                Global.gender = "male";
+
+            if (gn_f)
+                Global.gender = "female";
+
             startActivity(Intent(this, Register3::class.java))
         }
 

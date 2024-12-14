@@ -10,6 +10,13 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import android.widget.Toast
 
+import android.net.Uri
+
+import android.util.Base64
+import android.graphics.BitmapFactory
+import androidx.room.Room
+import com.google.android.material.snackbar.Snackbar
+
 class Register3 : AppCompatActivity() {
 
     private lateinit var buttonNext: Button
@@ -55,6 +62,28 @@ class Register3 : AppCompatActivity() {
             if (licenseNumber.isNotEmpty() && issueDate.isNotEmpty()) {
                 // Перейти на следующий экран
                 val intent = Intent(this, Home::class.java)
+
+                try {
+
+                    val db = Room.databaseBuilder(
+                        applicationContext,
+                        AppDatabase::class.java, "database-name"
+                    ).allowMainThreadQueries().build()
+
+                    val userDao = db.userDao()
+
+                    val a = userDao.Add(Global.login, Global.pass, Global.name, Global.surname,
+                        Global.patronymic, Global.gender, Global.profileB64)
+
+                    Global.clear()
+                    startActivity(Intent(this, Settings::class.java))
+
+
+                } catch (e: Exception) {
+                    Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 startActivity(intent)
             }
         }
@@ -93,6 +122,13 @@ class Register3 : AppCompatActivity() {
                     //uploadPassportPhotoButton.setImageURI(selectedImageUri)
                     uploadPassportPhotoButton.setImageResource(R.drawable.image_downloaded)
 
+                    val imageUri: Uri? = data.data
+                    imageUri?.let {
+                        val base64String = convertUriToBase64(it)
+                        Global.profileB64 = base64String;
+                    }
+
+
 
                 }
                 LICENSE_PHOTO_REQUEST_CODE -> {
@@ -106,5 +142,17 @@ class Register3 : AppCompatActivity() {
     companion object {
         const val PASSPORT_PHOTO_REQUEST_CODE = 1
         const val LICENSE_PHOTO_REQUEST_CODE = 2
+    }
+
+    // Метод для преобразования URI в Base64
+    private fun convertUriToBase64(uri: Uri): String? {
+        try {
+            val inputStream = contentResolver.openInputStream(uri)
+            val bytes = inputStream?.readBytes() ?: return null
+            return Base64.encodeToString(bytes, Base64.DEFAULT)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
+        }
     }
 }
