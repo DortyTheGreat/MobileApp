@@ -57,10 +57,14 @@
         <activity
             android:name=".Rental5"
             android:exported="true" />
+        <activity
+            android:name=".Booking"
+            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -62,7 +62,7 @@ class Rental4 : AppCompatActivity() {
                     AppDatabase::class.java, "database-name"
                 ).allowMainThreadQueries().build()
 
-                val CarDao = db.CarDao()
+                val CarDao = db.carDao()
 
                 /// location_: String?, yearManufacture_: String?, mark_: String?, model_: String?, transmission_: String?,
                 //            mileage_ : Int, description_ : String?, ownerID_ : Int, imagesB64_ : String?
@@ -70,7 +70,7 @@ class Rental4 : AppCompatActivity() {
                     Global.transmission, Global.mileage, Global.description, Global.current_session_email, Global.imagesB64)
 
                 Global.clear()
-                startActivity(Intent(this, Settings::class.java))
+                startActivity(Intent(this, Rental5::class.java))
 
 
             } catch (e: Exception) {
@@ -115,7 +115,6 @@ class Rental4 : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && data != null) {
             val selectedImageUri = data.data
-            check_data()
             when (requestCode) {
                 0 -> {
                     findViewById<ImageView>(R.id.photo).setImageURI(selectedImageUri)
@@ -154,6 +153,7 @@ class Rental4 : AppCompatActivity() {
                 }
 
             }
+            check_data()
         }
     }
 
@@ -172,11 +172,7 @@ class Rental4 : AppCompatActivity() {
     fun check_data(){
         button_reconnect.setEnabled(false)
 
-        if (S0 == null ) return
-        if (S1 == null ) return
-        if (S2 == null ) return
-        if (S3 == null ) return
-        if (S4 == null ) return
+        if (S0 == null && S1 == null && S2 == null && S3 == null && S4 == null) return
 
         button_reconnect.setEnabled(true)
     }

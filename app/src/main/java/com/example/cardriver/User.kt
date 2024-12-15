@@ -12,5 +12,6 @@ data class User(
     @ColumnInfo(name = "patronymic") val patronymic: String?,
     @ColumnInfo(name = "gender") val gender: String?, // 'male' or 'female'
     @ColumnInfo(name = "joinDate") val joinDate: String?,
-    @ColumnInfo(name = "profileB64") val profileB64: String?
+    @ColumnInfo(name = "profileB64") val profileB64: String?,
+    @ColumnInfo(name = "favoriteCarsB64") val favoriteCarsB64: String?
 )

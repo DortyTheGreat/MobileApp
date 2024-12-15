@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Домой" />
+		android:title="Домой"
+		/>
 
     <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorites"
-        android:title="Избранное"/>
+        android:iconTint="#834444"
+        android:iconTintMode="add"
+        android:title="Избранное" />
 
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
         android:title="Настройки"/>
-
+	
+	
 </menu>

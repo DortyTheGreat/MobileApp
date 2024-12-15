@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import android.util.Base64
 import android.graphics.BitmapFactory
 import android.widget.LinearLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,21 @@ class Settings : AppCompatActivity() {
             startActivity(Intent(this, Rental1::class.java))
             finish()
         }
+
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_settings
+
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.navigation_home -> {
+                    // Respond to navigation item 1 reselection
+                    startActivity(Intent(this, Booking::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
+
 
         try {
             val db = Room.databaseBuilder(
