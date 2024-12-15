@@ -24,5 +24,31 @@ object Global {
         gender = null
         profileB64 = null
     }
+
+    // Данные по аренде
+    var location: String? = null;
+    var yearManufacture: String? = null;
+    var mark: String? = null;
+    var model: String? = null;
+    var transmission: String? = null;
+    var mileage: Int = 0;
+    var description: String? = "default desc";
+    var ownerID: Int = 0;
+    var imagesB64: String? = null; // массив из B64 строк, который сам закодирован под B64
+
+    fun clearCar(){
+
+
+
+
+        location = null;
+        yearManufacture = null;
+        mark = null;
+        model = null;
+        transmission = null;
+        mileage = 0;
+        description = "default desc";
+        imagesB64 = null; // массив из B64 строк, который сам закодирован под B64
+    }
 }
 

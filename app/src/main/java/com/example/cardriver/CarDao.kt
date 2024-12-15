@@ -5,8 +5,15 @@ import androidx.room.*
 
 @Dao
 interface CarDao {
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM car")
     fun getAll(): List<Car>
+
+    @Query("INSERT INTO car (location, yearManufacture, mark, model, transmission, mileage, description," +
+            " ownerLogin, imagesB64)" +
+            "VALUES (:location_, :yearManufacture_, :mark_, :model_, :transmission_, :mileage_, " +
+            ":description_, :ownerLogin_, :imagesB64_)")
+    fun Add(location_: String?, yearManufacture_: String?, mark_: String?, model_: String?, transmission_: String?,
+            mileage_ : Int, description_ : String?, ownerLogin_ : String?, imagesB64_ : String?)
     /*
     @Query("SELECT * FROM user WHERE uid IN (:userIds)")
     fun loadAllByIds(userIds: IntArray): List<User>

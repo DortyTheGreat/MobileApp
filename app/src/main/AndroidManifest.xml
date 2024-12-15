@@ -43,6 +43,22 @@
             android:name=".Settings"
             android:exported="true" />
         <activity
+            android:name=".Rental1"
+            android:exported="true" />
+        <activity
+            android:name=".Rental2"
+            android:exported="true" />
+        <activity
+            android:name=".Rental3"
+            android:exported="true" />
+        <activity
+            android:name=".Rental4"
+            android:exported="true" />
+        <activity
+            android:name=".Rental5"
+            android:exported="true" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

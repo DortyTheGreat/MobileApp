@@ -235,7 +235,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button_login3"
+        android:id="@+id/button_start"
         android:layout_width="332dp"
         android:layout_height="57dp"
         android:layout_alignParentBottom="true"

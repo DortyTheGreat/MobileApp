@@ -126,6 +126,7 @@
 
             <!-- Menu Item 4 -->
             <LinearLayout
+                android:id="@+id/Rental_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

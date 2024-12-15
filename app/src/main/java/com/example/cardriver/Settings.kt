@@ -1,5 +1,6 @@
 package com.example.cardriver
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,12 +15,18 @@ import com.google.android.material.snackbar.Snackbar
 
 import android.util.Base64
 import android.graphics.BitmapFactory
+import android.widget.LinearLayout
 
 class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
+
+        findViewById<LinearLayout>(R.id.Rental_layout).setOnClickListener{
+            startActivity(Intent(this, Rental1::class.java))
+            finish()
+        }
 
         try {
             val db = Room.databaseBuilder(
@@ -58,4 +65,7 @@ class Settings : AppCompatActivity() {
             return
         }
     }
+
+
+
 }
