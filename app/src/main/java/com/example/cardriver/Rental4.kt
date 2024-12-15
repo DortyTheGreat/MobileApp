@@ -50,7 +50,7 @@ class Rental4 : AppCompatActivity() {
             if (S3 != null) stringList.add(S3!!)
             if (S4 != null) stringList.add(S4!!)
 
-            val combinedString = stringList.joinToString(separator = ",")
+            val combinedString = stringList.joinToString(separator = "#")
             val byteArray = combinedString.toByteArray(Charsets.UTF_8)
             val base64String = Base64.encodeToString(byteArray, Base64.DEFAULT)
             Global.imagesB64 = base64String
