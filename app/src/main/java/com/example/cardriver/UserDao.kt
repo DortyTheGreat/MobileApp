@@ -23,6 +23,10 @@ interface UserDao {
     fun Add(login_: String?, pass_: String?, name_: String?, surname_: String?, patronymic_: String?,
             gender_ : String?, profileB64_ : String?)
 
+
+    @Query("UPDATE user SET favoriteCarsB64 = :NewFavStr WHERE login LIKE :login_")
+    fun updateFavorite(login_: String, NewFavStr: String): Int
+
     @Insert
     fun insertAll(vararg users: User)
 

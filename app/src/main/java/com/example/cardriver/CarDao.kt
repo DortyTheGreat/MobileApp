@@ -14,6 +14,10 @@ interface CarDao {
             ":description_, :ownerLogin_, :imagesB64_)")
     fun Add(location_: String?, yearManufacture_: String?, mark_: String?, model_: String?, transmission_: String?,
             mileage_ : Int, description_ : String?, ownerLogin_ : String?, imagesB64_ : String?)
+
+    @Query("SELECT * FROM car WHERE uid LIKE :UID LIMIT 1")
+    fun findByUID(UID: Int): Car
+
     /*
     @Query("SELECT * FROM user WHERE uid IN (:userIds)")
     fun loadAllByIds(userIds: IntArray): List<User>

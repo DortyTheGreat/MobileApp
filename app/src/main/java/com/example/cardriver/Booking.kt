@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import android.util.Base64
+import android.graphics.BitmapFactory
 
 class Booking : AppCompatActivity() {
     private lateinit var button_reconnect: Button
@@ -54,28 +57,8 @@ class Booking : AppCompatActivity() {
             val linearLayout = findViewById<LinearLayout>(R.id.car_list)
             val inflater = LayoutInflater.from(this)
 
-            for (item in data) {
-                // Инфлейтим шаблон
-                val itemView = inflater.inflate(R.layout.item_car, linearLayout, false)
+            showFilteredData(data, inflater, linearLayout, "", false, db)
 
-                // Настраиваем текст в TextView
-                val textView_car_model = itemView.findViewById<TextView>(R.id.car_model)
-                textView_car_model.text = item.model
-
-                val textView_car_mark = itemView.findViewById<TextView>(R.id.car_mark)
-                textView_car_mark.text = item.mark
-
-                /*
-                // Настраиваем действие кнопки
-                val button = itemView.findViewById<Button>(R.id.item_button)
-                button.setOnClickListener {
-                    Toast.makeText(this, "$item кнопка нажата", Toast.LENGTH_SHORT).show()
-                }
-                 */
-
-                // Добавляем инфлейтированный вид в LinearLayout
-                linearLayout.addView(itemView)
-            }
 
         } catch (e: Exception) {
             Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
@@ -87,5 +70,83 @@ class Booking : AppCompatActivity() {
 
     }
 
+    fun decodeBase64StringToList(base64String: String): List<String> {
+        // Декодируем base64 строку в массив байтов
+        val byteArray = Base64.decode(base64String, Base64.DEFAULT)
+
+        // Преобразуем массив байтов в строку
+        val combinedString = byteArray.toString(Charsets.UTF_8)
+
+        // Разделяем строку на элементы списка
+        return combinedString.split("#")
+    }
+
+
+    fun showFilteredData(data : List<Car>, inflater: LayoutInflater, linearLayout : LinearLayout,
+                         stringSearchRequest : String, onlyFavorite : Boolean, db : AppDatabase){
+        for (item in data) {
+            if (stringSearchRequest != "")
+                if (item.mark != stringSearchRequest) continue
+
+            if (onlyFavorite){
+                val userDao = db.userDao()
+
+                if (userDao.findByLogin(Global.current_session_email!!).favoriteCarsB64 == null) continue
+
+                val lst : List<String> = decodeBase64StringToList(userDao.findByLogin(Global.current_session_email!!).favoriteCarsB64!!)
+                if (!lst.contains(item.uid.toString())) continue
+            }
+
+            // Инфлейтим шаблон
+            val itemView = inflater.inflate(R.layout.item_car, linearLayout, false)
+
+            // Настраиваем текст в TextView
+            val textView_car_model = itemView.findViewById<TextView>(R.id.car_model)
+            textView_car_model.text = item.model
+
+            val textView_car_mark = itemView.findViewById<TextView>(R.id.car_mark)
+            textView_car_mark.text = item.mark
+
+            val textView_car_transmission = itemView.findViewById<TextView>(R.id.car_transmission)
+            textView_car_transmission.text = item.transmission
+
+            val textView_car_image = itemView.findViewById<ImageView>(R.id.car_image)
+            val lst : List<String> = decodeBase64StringToList(item.imagesB64!!)
+
+            // Удалите префикс "data:image/png;base64," если он есть
+            val base64String = lst[0].substringAfter(",")
+
+            // Декодируйте строку Base64 в массив байтов
+            val decodedString = Base64.decode(base64String, Base64.DEFAULT)
+
+            // Преобразуйте массив байтов в Bitmap
+            val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
+            // Установите Bitmap в ImageView
+            textView_car_image.setImageBitmap(decodedByte);
+
+
+
+            // Настраиваем действие кнопки
+            val button = itemView.findViewById<Button>(R.id.book_button)
+            button.setOnClickListener {
+
+                val intent = Intent(this, RentConfirm::class.java)
+                intent.putExtra("car_id", item.uid);
+                startActivity(intent)
+            }
+
+            val button2 = itemView.findViewById<Button>(R.id.details_button)
+            button2.setOnClickListener {
+                val intent = Intent(this, Details::class.java)
+                intent.putExtra("car_id", item.uid);
+                startActivity(intent)
+            }
+
+
+            // Добавляем инфлейтированный вид в LinearLayout
+            linearLayout.addView(itemView)
+        }
+    }
 
 }

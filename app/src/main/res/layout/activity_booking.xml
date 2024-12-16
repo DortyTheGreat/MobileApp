@@ -24,90 +24,22 @@
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"/>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-			android:id="@+id/car_list"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="8dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_car_image" />
-
-            <TextView
-                android:id="@+id/car_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="S 500 Sedan"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/car_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mercedes-Benz"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/car_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="2500Р в день"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
+            android:layout_height="match_parent"
+			android:paddingBottom="40dp">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="A/T"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Бензин"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/car_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <Button
-                    android:id="@+id/book_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/black"
-                    android:text="Забронировать"
-                    android:textColor="@android:color/white" />
-
-                <Button
-                    android:id="@+id/details_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Детали" />
+                
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
     <!-- Title -->
