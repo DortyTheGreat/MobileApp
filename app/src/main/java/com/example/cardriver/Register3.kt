@@ -61,7 +61,7 @@ class Register3 : AppCompatActivity() {
 
             if (licenseNumber.isNotEmpty() && issueDate.isNotEmpty()) {
                 // Перейти на следующий экран
-                val intent = Intent(this, Home::class.java)
+                val intent = Intent(this, Booking::class.java)
 
                 try {
 

@@ -25,13 +25,11 @@ class Join : AppCompatActivity() {
         val buttonLog = findViewById<Button>(R.id.button_login)
         buttonLog.setOnClickListener {
             startActivity(Intent(this@Join, Login::class.java))
-            finish()
         }
 
         val buttonReg = findViewById<Button>(R.id.button_reg)
         buttonReg.setOnClickListener {
             startActivity(Intent(this@Join, Register1::class.java))
-            finish()
         }
     }
 }

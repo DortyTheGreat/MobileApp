@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+	android:id="@+id/main"
     tools:context=".BecomeLandlordActivity">
 
     <!-- Back Button -->
@@ -96,6 +97,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_rent_start"
 					android:text="08:00, 27 сентября 2024" />
 			</LinearLayout>
 
@@ -115,6 +117,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_rent_end"
 					android:text="08:00, 30 сентября 2024" />
 			</LinearLayout>
 
@@ -172,7 +175,8 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Хрен его знает" />
+					android:text="Хрен его знает" 
+					android:id="@+id/car_adress" />
 			</LinearLayout>
 
 			<LinearLayout

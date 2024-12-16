@@ -74,7 +74,7 @@ class Login : AppCompatActivity() {
                     }
 
                     Global.current_session_email = ema
-                    startActivity(Intent(this, Settings::class.java))
+                    startActivity(Intent(this, Booking::class.java))
 
 
                 } catch (e: Exception) {

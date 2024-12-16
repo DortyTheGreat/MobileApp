@@ -26,7 +26,10 @@ class Settings : AppCompatActivity() {
 
         findViewById<LinearLayout>(R.id.Rental_layout).setOnClickListener{
             startActivity(Intent(this, Rental1::class.java))
-            finish()
+        }
+
+        findViewById<LinearLayout>(R.id.my_bookings_ll).setOnClickListener{
+            startActivity(Intent(this, MyBookings::class.java))
         }
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_settings
