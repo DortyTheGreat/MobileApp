@@ -19,20 +19,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.room.Room
 import com.google.android.material.snackbar.Snackbar
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Locale
-import java.time.ZoneOffset
 
-class RentConfirm : AppCompatActivity() {
+class BookingCancel : AppCompatActivity() {
     private lateinit var button_reconnect: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_rent_confirm)
-
+        setContentView(R.layout.activity_booking_cancel)
 
         try {
 
@@ -44,18 +43,41 @@ class RentConfirm : AppCompatActivity() {
 
 
             val carDao = db.carDao()
+            val userDao = db.userDao()
+            val rentDao = db.rentDao()
             //Snackbar.make(findViewById(R.id.main), "length: " + carDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
-            val item = carDao.findByUID(intent.getIntExtra("car_id", 0))
 
-            findViewById<TextView>(R.id.car_adress).text = item.location
-            findViewById<TextView>(R.id.car_model).text = item.model
-            findViewById<TextView>(R.id.car_mark).text = item.mark
-            findViewById<TextView>(R.id.car_transmission).text = item.transmission
+            val item_rent = rentDao.findByUID( intent.getIntExtra("book_id", 0))
+
+            val item_car = carDao.findByUID(
+                item_rent.carID
+            )
+
+            val item_user = userDao.findByLogin(
+                item_rent.userID
+            )
+
+            findViewById<TextView>(R.id.car_adress).text = item_car.location
+            findViewById<TextView>(R.id.car_model).text = item_car.model
+            findViewById<TextView>(R.id.car_mark).text = item_car.mark
+            findViewById<TextView>(R.id.car_transmission).text = item_car.transmission
+            findViewById<TextView>(R.id.car_owner).text = item_user.surname + " " + item_user.name + item_user.patronymic
+
+            val restoredDateTimeStart = LocalDateTime.ofEpochSecond(item_rent.carRentDateStart, 0, ZoneOffset.UTC )
+            val restoredDateTimeEnd = LocalDateTime.ofEpochSecond(item_rent.carRentDateEnd, 0, ZoneOffset.UTC )
+            val formatter = DateTimeFormatter.ofPattern("HH:mm dd MMMM yyyy", Locale("ru"))
+
+            val formattedCurrentDateTimeStart = restoredDateTimeStart.format(formatter)
+            val formattedCurrentDateTimeEnd = restoredDateTimeEnd.format(formatter)
+
+            findViewById<TextView>(R.id.car_rent_start).text = formattedCurrentDateTimeStart
+            findViewById<TextView>(R.id.car_rent_end).text = formattedCurrentDateTimeEnd
+
 
 
 
             val textView_car_image = findViewById<ImageView>(R.id.car_image)
-            val lst : List<String> = decodeBase64StringToList(item.imagesB64!!)
+            val lst : List<String> = decodeBase64StringToList(item_car.imagesB64!!)
 
             // Удалите префикс "data:image/png;base64," если он есть
             val base64String = lst[0].substringAfter(",")
@@ -70,28 +92,15 @@ class RentConfirm : AppCompatActivity() {
             textView_car_image.setImageBitmap(decodedByte);
 
 
-            val currentDateTime = LocalDateTime.now(ZoneId.systemDefault())
 
-            // Получение даты и времени через три дня
-            val futureDateTime = currentDateTime.plus(3, ChronoUnit.DAYS)
 
-            // Форматирование даты и времени в нужный формат
-            val formatter = DateTimeFormatter.ofPattern("HH:mm dd MMMM yyyy", Locale("ru"))
-
-            val formattedCurrentDateTime = currentDateTime.format(formatter)
-            val formattedFutureDateTime = futureDateTime.format(formatter)
-
-            findViewById<TextView>(R.id.car_rent_start).text = formattedCurrentDateTime
-            findViewById<TextView>(R.id.car_rent_end).text = formattedFutureDateTime
 
             findViewById<Button>(R.id.button_start).setOnClickListener{
 
                 val rentDao = db.rentDao()
-                rentDao.Add(
-                    Global.current_session_email!!, intent.getIntExtra("car_id", 0),
-                    currentDateTime.toEpochSecond(ZoneOffset.UTC ),
-                    futureDateTime.toEpochSecond(ZoneOffset.UTC) )
-                    startActivity(Intent(this, RentDone::class.java))
+                rentDao.removeByUID(intent.getIntExtra("book_id", 0))
+
+                startActivity(Intent(this, MyBookings::class.java))
 
             }
 

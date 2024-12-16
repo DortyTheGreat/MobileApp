@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+	android:id="@+id/main"
     tools:context=".BecomeLandlordActivity">
 
     <!-- Back Button -->
@@ -96,6 +97,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_rent_start"
 					android:text="08:00, 27 сентября 2024" />
 			</LinearLayout>
 
@@ -115,6 +117,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_rent_end"
 					android:text="08:00, 30 сентября 2024" />
 			</LinearLayout>
 
@@ -172,6 +175,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_owner"
 					android:text="ХИХИ ХАХА ПУКПУК" />
 			</LinearLayout>
 
@@ -191,6 +195,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:id="@+id/car_adress"
 					android:text="Хрен его знает" />
 			</LinearLayout>
 
@@ -239,7 +244,7 @@
 		android:layout_height="33dp"
 		android:fontFamily="sans-serif"
 		android:gravity="center"
-		android:text="Оформление Аренды"
+		android:text="Удаление брони"
 		android:textColor="@color/black"
 		android:textSize="24sp"
 		app:layout_constraintBottom_toBottomOf="parent"
@@ -262,7 +267,7 @@
 		android:layout_marginEnd="24dp"
 		android:layout_marginBottom="10dp"
 		android:background="@drawable/btn_back"
-		android:text="Продолжить"
+		android:text="Удалить"
 		android:textColor="@color/white"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"

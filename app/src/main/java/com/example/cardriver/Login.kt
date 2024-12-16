@@ -69,7 +69,7 @@ class Login : AppCompatActivity() {
                     val a = userDao.findByLoginPass(ema,pas)
 
                     if (a == null){
-                        Snackbar.make(findViewById(R.id.main), "Такого пользователя нет", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(findViewById(R.id.main), "Неверные аутентификационные данные", Snackbar.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
 

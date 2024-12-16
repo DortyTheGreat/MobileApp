@@ -29,6 +29,11 @@ class Details : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_details)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         // car_adress, car_description, car_name, photo
 
@@ -44,7 +49,7 @@ class Details : AppCompatActivity() {
 
 
             val carDao = db.carDao()
-            Snackbar.make(findViewById(R.id.main), "length: " + carDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
+            //Snackbar.make(findViewById(R.id.main), "length: " + carDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
             val item = carDao.findByUID(intent.getIntExtra("car_id", 0))
 
             findViewById<TextView>(R.id.car_adress).text = item.location

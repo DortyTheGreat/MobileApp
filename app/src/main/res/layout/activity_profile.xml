@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+	android:id="@+id/main"
     tools:context=".ProfileActivity">
 
     <!-- Profile Header -->
@@ -20,12 +21,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/hhru"
+			android:id="@+id/Profile_display"
             android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Иван Иванов"
+			android:id="@+id/Name_display"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"/>
@@ -33,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Присоединился в июле 2024"
+            android:text="Присоединился в декабре 2024"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"/>
 
@@ -61,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ivanov@mtuci.ru"
+					android:id="@+id/Email_display"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -69,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+				android:id="@+id/change_pass_ll"
                 android:paddingBottom="16dp">
 
                 <TextView
@@ -103,6 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Мужской"
+					android:id="@+id/Gender_display"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -124,6 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ivanov@gmail.com"
+					android:id="@+id/Gmail_display"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -132,6 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+				android:id="@+id/leave_ll"
                 android:paddingBottom="16dp">
 
                 <TextView

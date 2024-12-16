@@ -23,13 +23,13 @@ import android.util.Base64
 import android.graphics.BitmapFactory
 import android.widget.EditText
 
-class Booking : AppCompatActivity() {
+class BookingFavorite : AppCompatActivity() {
     private lateinit var button_reconnect: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_booking)
+        setContentView(R.layout.activity_booking_favorite)
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_home
 
@@ -40,40 +40,15 @@ class Booking : AppCompatActivity() {
                     startActivity(Intent(this, Settings::class.java))
                     true
                 }
-                R.id.navigation_favorites -> {
+                R.id.navigation_home -> {
                     // Respond to navigation item 1 reselection
-                    startActivity(Intent(this, BookingFavorite::class.java))
+                    startActivity(Intent(this, Booking::class.java))
                     true
                 }
                 else -> false
             }
         }
 
-        findViewById<ImageView>(R.id.imageView2).setOnClickListener{
-
-            try {
-
-                val db = Room.databaseBuilder(
-                    applicationContext,
-                    AppDatabase::class.java, "database-name"
-                ).allowMainThreadQueries().build()
-
-                val carDao = db.carDao()
-                //Snackbar.make(findViewById(R.id.main), "length: " + carDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
-                val data = carDao.getAll()
-
-                val linearLayout = findViewById<LinearLayout>(R.id.car_list)
-                val inflater = LayoutInflater.from(this)
-
-                showFilteredData(data, inflater, linearLayout, findViewById<EditText>(R.id.search_bar).text.toString(), false, db)
-
-
-            } catch (e: Exception) {
-                Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-        }
 
         try {
 
@@ -89,7 +64,7 @@ class Booking : AppCompatActivity() {
             val linearLayout = findViewById<LinearLayout>(R.id.car_list)
             val inflater = LayoutInflater.from(this)
 
-            showFilteredData(data, inflater, linearLayout, "", false, db)
+            showFilteredData(data, inflater, linearLayout, "", true, db)
 
 
         } catch (e: Exception) {

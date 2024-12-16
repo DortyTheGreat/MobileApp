@@ -11,10 +11,17 @@ interface RentDao {
     @Query("INSERT INTO rent (userLogin, carID, carRentDateStart, carRentDateEnd)" +
             "VALUES (:userLogin_, :carID_, :carRentDateStart_, :carRentDateEnd_)")
     fun Add(userLogin_: String, carID_ : Int, carRentDateStart_ : Long, carRentDateEnd_ : Long)
-    /*
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): List<User>
 
+    @Query("SELECT * FROM rent WHERE userLogin LIKE :login_")
+    fun getAllByLogin(login_: String): List<Rent>
+
+    @Query("SELECT * FROM rent WHERE uid LIKE :UID LIMIT 1")
+    fun findByUID(UID: Int): Rent
+
+    @Query("DELETE FROM rent WHERE uid = :UID")
+    fun removeByUID(UID: Int): Int
+
+    /*
     @Query("SELECT * FROM user WHERE login LIKE :login_ LIMIT 1")
     fun findByLogin(login_: String): User
 

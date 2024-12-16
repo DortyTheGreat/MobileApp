@@ -57,8 +57,12 @@
         <activity
             android:name=".Rental5"
             android:exported="true" />
+
         <activity
             android:name=".Booking"
+            android:exported="true" />
+        <activity
+            android:name=".BookingFavorite"
             android:exported="true" />
 
         <activity
@@ -71,7 +75,16 @@
         <activity
             android:name=".MyBookings"
             android:exported="true" />
+        <activity
+            android:name=".BookingCancel"
+            android:exported="true" />
 
+        <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
         <activity
             android:name=".Details"
             android:exported="true" />

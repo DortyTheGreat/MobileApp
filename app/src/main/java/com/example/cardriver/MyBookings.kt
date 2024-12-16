@@ -41,8 +41,8 @@ class MyBookings : AppCompatActivity() {
 
             val rentDao = db.rentDao()
             val carDao = db.carDao()
-            Snackbar.make(findViewById(R.id.main), "length: " + rentDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
-            val data = rentDao.getAll()
+            //Snackbar.make(findViewById(R.id.main), "length: " + rentDao.getAll().size.toString(), Snackbar.LENGTH_SHORT).show()
+            val data = rentDao.getAllByLogin(Global.current_session_email!!)
 
             val linearLayout = findViewById<LinearLayout>(R.id.book_list)
             val inflater = LayoutInflater.from(this)
@@ -72,13 +72,20 @@ class MyBookings : AppCompatActivity() {
 
 
                 textView_book_data.text = "Начало: " + formattedCurrentDateTime
+
+                itemView.findViewById<LinearLayout>(R.id.item_booking_ll).setOnClickListener{
+                    val intent = Intent(this, BookingCancel::class.java)
+                    intent.putExtra("book_id", item.uid);
+                    startActivity(intent)
+                }
+
                 linearLayout.addView(itemView)
 
             }
 
 
         } catch (e: Exception) {
-            Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).setTextMaxLines(10).show()
             return
         }
 

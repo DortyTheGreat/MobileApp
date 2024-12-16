@@ -1,60 +1,36 @@
 package com.example.cardriver
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Base64
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsCompat
-
 import androidx.activity.enableEdgeToEdge
-
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.room.Room
 import com.google.android.material.snackbar.Snackbar
 
-import android.util.Base64
-import android.graphics.BitmapFactory
-import android.widget.LinearLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
+class Profile : AppCompatActivity() {
+    private lateinit var button_reconnect: Button
 
-class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.activity_profile)
 
-        findViewById<LinearLayout>(R.id.Rental_layout).setOnClickListener{
-            startActivity(Intent(this, Rental1::class.java))
+        findViewById<LinearLayout>(R.id.change_pass_ll).setOnClickListener{
+            startActivity(Intent(this, ChangePassword::class.java))
         }
-
-        findViewById<LinearLayout>(R.id.my_bookings_ll).setOnClickListener{
-            startActivity(Intent(this, MyBookings::class.java))
-        }
-
-        findViewById<LinearLayout>(R.id.profile_ll).setOnClickListener{
-            startActivity(Intent(this, Profile::class.java))
-        }
-
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_settings
-
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.navigation_home -> {
-                    // Respond to navigation item 1 reselection
-                    startActivity(Intent(this, Booking::class.java))
-                    true
-                }
-                R.id.navigation_favorites -> {
-                    // Respond to navigation item 1 reselection
-                    startActivity(Intent(this, BookingFavorite::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
-
-
 
         try {
             val db = Room.databaseBuilder(
@@ -73,6 +49,15 @@ class Settings : AppCompatActivity() {
 
             findViewById<TextView>(R.id.Name_display).setText(a.surname + " " + a.name + " " + a.patronymic)
             findViewById<TextView>(R.id.Email_display).setText(a.login)
+            findViewById<TextView>(R.id.Gmail_display).setText(a.login)
+
+            findViewById<TextView>(R.id.Gender_display).setText("Неопределено")
+
+            if (a.gender == "male")
+                findViewById<TextView>(R.id.Gender_display).setText("Мужской")
+            if (a.gender == "female")
+                findViewById<TextView>(R.id.Gender_display).setText("Женский")
+            //change_pass_ll
 
             val base64Image = a.profileB64
 
@@ -88,12 +73,19 @@ class Settings : AppCompatActivity() {
             // Установите Bitmap в ImageView
             findViewById<ImageView>(R.id.Profile_display).setImageBitmap(decodedByte)
 
+
+            findViewById<LinearLayout>(R.id.leave_ll).setOnClickListener{
+                Global.current_session_email = null
+                startActivity(Intent(this, Join::class.java))
+                finish()
+            }
+
         }catch (e: Exception) {
             Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).show()
             return
         }
-    }
 
+    }
 
 
 }
