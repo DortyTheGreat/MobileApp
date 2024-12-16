@@ -56,20 +56,40 @@ class Details : AppCompatActivity() {
             findViewById<TextView>(R.id.car_description).text = item.description
             findViewById<TextView>(R.id.car_name).text = item.model
 
-            val textView_car_image = findViewById<ImageView>(R.id.photo)
+
             val lst : List<String> = decodeBase64StringToList(item.imagesB64!!)
 
-            // Удалите префикс "data:image/png;base64," если он есть
-            val base64String = lst[0].substringAfter(",")
+            val linearLayout = findViewById<LinearLayout>(R.id.photo_container)
+            val inflater = LayoutInflater.from(this)
 
-            // Декодируйте строку Base64 в массив байтов
-            val decodedString = Base64.decode(base64String, Base64.DEFAULT)
+            findViewById<Button>(R.id.button_start).setOnClickListener{
+                val intent2 = Intent(this, RentConfirm::class.java)
+                intent2.putExtra("car_id", intent.getIntExtra("car_id", 0));
+                startActivity(intent2)
+            }
 
-            // Преобразуйте массив байтов в Bitmap
-            val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+            for (item in lst) {
 
-            // Установите Bitmap в ImageView
-            textView_car_image.setImageBitmap(decodedByte);
+
+                // Инфлейтим шаблон
+                val itemView = inflater.inflate(R.layout.item_car_image, linearLayout, false)
+
+                // Удалите префикс "data:image/png;base64," если он есть
+                val base64String = item.substringAfter(",")
+
+                // Декодируйте строку Base64 в массив байтов
+                val decodedString = Base64.decode(base64String, Base64.DEFAULT)
+
+                // Преобразуйте массив байтов в Bitmap
+                val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
+                // Установите Bitmap в ImageView
+                itemView.findViewById<ImageView>(R.id.car_image).setImageBitmap(decodedByte);
+                linearLayout.addView(itemView)
+            }
+
+
+
 
             if (isFavorited(db, item)){
                 findViewById<ImageView>(R.id.favorite).setImageResource(R.drawable.ic_love_full)

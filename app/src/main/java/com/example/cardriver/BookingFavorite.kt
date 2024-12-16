@@ -31,7 +31,7 @@ class BookingFavorite : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_booking_favorite)
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_home
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_favorites
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->
             when(item.itemId) {

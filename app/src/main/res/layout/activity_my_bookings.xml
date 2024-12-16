@@ -51,38 +51,7 @@
 		android:id="@+id/book_list"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp"
-        android:orientation="vertical">
-
-        <!-- How it Works Card -->
-
-        
-
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Имя Машины123123"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
-				android:text="Данные по броне"
-				android:textSize="14sp" />
-		</LinearLayout>
-        
-
-        <!-- Insurance Policy Card -->
-
-        <!-- Support Card -->
-    </LinearLayout>
+        android:orientation="vertical"/>
 
     <!-- Start Button -->
 
