@@ -28,7 +28,6 @@
                 android:id="@+id/Profile_display"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:contentDescription="Описание профиля"
                 android:src="@drawable/hhru" />
 
             <LinearLayout
@@ -81,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Мои бронирования"
+                    android:text="@string/my_bookings"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -102,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Тема"
+                    android:text="@string/theme"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -123,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Уведомления"
+                    android:text="@string/notifications"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -145,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Подключить свой автомобиль"
+                    android:text="@string/connect_your_car"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -166,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Помощь"
+                    android:text="@string/help"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -187,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Пригласи друга"
+                    android:text="@string/friend_invite"
                     android:textSize="16sp" />
             </LinearLayout>
 

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Давайте найдем автомобиль"
+            android:text="@string/activity_booking_title"
 			android:paddingBottom="10dp"
             android:textSize="18sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
-                android:hint="Введите марку автомобиля"
+                android:hint="@string/activity_booking_searchhint"
                 android:padding="12dp" />
         </LinearLayout>
 

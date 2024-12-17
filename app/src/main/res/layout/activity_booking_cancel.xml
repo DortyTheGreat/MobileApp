@@ -91,7 +91,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Начало аренды:"
+					android:text="@string/rent_start"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -111,7 +111,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Конец аренды:"
+					android:text="@string/rent_end"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -169,7 +169,8 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="ФИО Водителя:"
+					android:text="@string/fio_vod"
+					
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -189,7 +190,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Адрес:"
+					android:text="@string/address"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -209,7 +210,8 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Итого:"
+					android:text="@string/total"
+					
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -244,7 +246,7 @@
 		android:layout_height="33dp"
 		android:fontFamily="sans-serif"
 		android:gravity="center"
-		android:text="Удаление брони"
+		android:text="@string/activity_booking_cancel_title"
 		android:textColor="@color/black"
 		android:textSize="24sp"
 		app:layout_constraintBottom_toBottomOf="parent"
@@ -267,7 +269,7 @@
 		android:layout_marginEnd="24dp"
 		android:layout_marginBottom="10dp"
 		android:background="@drawable/btn_back"
-		android:text="Удалить"
+		android:text="@string/delete"
 		android:textColor="@color/white"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"

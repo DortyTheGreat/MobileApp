@@ -50,4 +50,88 @@
         <item>М/Т</item>
     </string-array>
 	
+	<string name="activity_booking_title">Давайте найдём автомобиль</string>
+	<string name="activity_booking_searchhint">Введите названеи марки</string>
+	
+	<string name="activity_booking_cancel_title">Удаление брони</string>
+	<string name="delete">Удалить</string>
+	
+	<string name="total">Итого</string>
+	<string name="address">Адрес</string>
+	<string name="fio_vod">ФИО Водителя</string>
+	<string name="rent_end">Конец Аредны</string>
+	<string name="rent_start">Начало Аренды</string>
+	
+	<string name="activity_booking_favorite_title">Избранное</string>
+	
+	<string name="change_password">Сменить пароль</string>
+	
+	<string name="current_password">Текущий пароль</string>
+	<string name="current_password_hint">Введите текущий пароль</string>
+	
+	<string name="create_password">Новый пароль</string>
+	<string name="create_password_hint">Введите новый пароль</string>
+	
+	<string name="repeat_new_password">Повторите новый пароль</string>
+	<string name="repeat_new_password_hint">Введите новый пароль</string>
+	
+	<string name="description">Описание</string>
+	<string name="details">Детали</string>
+	<string name="address_nah">Адрес нахождения</string>
+	
+	<string name="to_login">Войти</string>
+	<string name="to_register">Зарегестрироваться</string>
+	
+	<string name="AppName">CarDriver</string>
+	<string name="App_brief">Поможем найти твою следующую поездку</string>
+	
+	<string name="email">Электронная почта</string>
+	<string name="login_in">Войдите в аккаунт</string>
+	<string name="ask_for_data">Пожалуйста введите свои данные</string>
+	<string name="email_hint">Введите вашу почту</string>
+	<string name="password">Пароль</string>
+	<string name="password_hint">Введите ваш пароль</string>
+	
+	<string name="my_bookings_title">Мои бронирования</string>
+	
+	<string name="check_connection">Проверьте подключение и повторите попытку</string>
+	<string name="no_connection">Нет подключения к интернету</string>
+	<string name="retry">Повторить попытку</string>
+	<string name="next">Далее</string>
+	
+	<string name="skip">Пропустить</string>
+	<string name="onboarding_title_1">Аренда автомобилей</string>
+	<string name="onboarding_text_1">Открой для себя удобный и доступный способ передвижения</string>
+	<string name="google">Google</string>
+	<string name="gender">Пол</string>
+	<string name="logoff">Выйти из профиля</string>
+	<string name="confidential_agree">Я согласен с условиями обслуживания и политикой конфиденциальности</string>
+	<string name="create_account">Создать аккаунт</string>
+	<string name="gender_male">Мужской</string>
+	<string name="gender_female">Женский</string>
+	<string name="birth_date">День рождения</string>
+	<string name="surname">Фамилия</string>
+	<string name="surname_hint">Введите фамилию</string>
+	<string name="name">Имя</string>
+	<string name="name_hint">Введите имя</string>
+	<string name="name3">Отчество</string>
+	<string name="name3_hint">Введите отчество</string>
+	<string name="go_to_booking">Перейти к своим бронированиям</string>
+	<string name="go_to_main">На главную</string>
+	<string name="good_ride_for_you">Удачной поездки</string>
+	<string name="connect_your_car">Подключить свой автомобиль</string>
+	<string name="theme">Тема</string>
+	<string name="notifications">Уведомления</string>
+	<string name="my_bookings">Мои бронирования</string>
+	<string name="friend_invite">Пригласи други</string>
+	<string name="help">Помощь</string>
+	<string name="petrol">Бензин</string>
+	<string name="to_rent">Забронировать</string>
+	<string name="to_home">Домой</string>
+	<string name="favorite">Избранное</string>
+	<string name="settings">Настройки</string>
+	<string name="custom"></string>
+	<string name="custom"></string>
+	
+	
 </resources>

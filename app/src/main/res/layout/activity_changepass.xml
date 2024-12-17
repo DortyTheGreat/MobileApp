@@ -28,7 +28,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="117dp"
             android:layout_marginEnd="201dp"
-            android:text="Текущий пароль"
+            android:text="@string/current_password"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -56,7 +56,7 @@
             android:layout_height="33dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Сменить пароль"
+            android:text="@string/change_password"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +81,7 @@
                 android:id="@+id/textInputEditText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите текущий пароль" />
+                android:hint="@string/current_password_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Придумайте пароль"
+            android:text="@string/create_password"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -112,7 +112,7 @@
                 android:id="@+id/textInputEditText_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите новый пароль" />
+                android:hint="@string/create_password_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -131,7 +131,7 @@
                 android:id="@+id/textInputEditText_pass_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Повторите новый пароль"
+                android:hint="@string/repeat_new_password_hint"
                 android:visibility="visible" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Повторите пароль"
+            android:text="@string/repeat_new_password"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

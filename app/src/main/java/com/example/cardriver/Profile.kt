@@ -34,6 +34,10 @@ class Profile : AppCompatActivity() {
             insets
         }
 
+        findViewById<ImageView>(R.id.backArrow4).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
+
         findViewById<LinearLayout>(R.id.change_pass_ll).setOnClickListener{
             startActivity(Intent(this, ChangePassword::class.java))
         }

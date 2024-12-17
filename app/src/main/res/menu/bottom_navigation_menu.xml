@@ -5,7 +5,7 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-		android:title="Домой"
+		android:title="@string/to_home"
 		/>
 
     <item
@@ -13,12 +13,12 @@
         android:icon="@drawable/ic_favorites"
         android:iconTint="#834444"
         android:iconTintMode="add"
-        android:title="Избранное" />
+        android:title="@string/favorite" />
 
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
-        android:title="Настройки"/>
+        android:title="@string/settings"/>
 	
 	
 </menu>

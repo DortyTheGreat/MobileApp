@@ -21,7 +21,7 @@
             android:layout_height="33dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Избранное"
+            android:text="@string/activity_booking_favorite_title"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"

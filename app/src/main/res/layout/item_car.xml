@@ -57,7 +57,7 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Бензин"
+			android:text="@string/petrol"
 			android:textSize="14sp" />
 	</LinearLayout>
 
@@ -74,7 +74,7 @@
 			android:layout_marginEnd="8dp"
 			android:layout_weight="1"
 			android:backgroundTint="@color/black"
-			android:text="Забронировать"
+			android:text="@string/to_rent"
 			android:textColor="@android:color/white" />
 
 		<Button
@@ -82,6 +82,6 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
-			android:text="Детали" />
+			android:text="@string/details" />
 	</LinearLayout>
 </LinearLayout>

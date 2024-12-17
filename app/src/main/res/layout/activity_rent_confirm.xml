@@ -91,7 +91,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Начало аренды:"
+					android:text="@string/rent_start"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -111,7 +111,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Конец аренды:"
+					android:text="@string/rent_end"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -169,7 +169,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Адрес:"
+					android:text="@string/address"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView
@@ -189,7 +189,7 @@
 					android:layout_width="0dp"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
-					android:text="Итого:"
+					android:text="@string/total"
 					android:textColor="@android:color/darker_gray" />
 
 				<TextView

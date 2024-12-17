@@ -15,7 +15,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="66dp"
         android:background="@drawable/btn_back"
-        android:text="Далее"
+        android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="62dp"
             android:layout_marginEnd="201dp"
-            android:text="Фамилия"
+            android:text="@string/surname"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -73,7 +73,7 @@
             android:layout_height="33dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Создать аккаунт"
+            android:text="@string/create_account"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +98,7 @@
                 android:id="@+id/textInputEditText_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите фамилию" />
+                android:hint="@string/surname_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Имя"
+            android:text="@string/name"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -130,7 +130,7 @@
                 android:id="@+id/textInputEditText_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите имя" />
+                android:hint="@string/name_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Отчество"
+            android:text="@string/name3"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -189,7 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Дата рождения"
+            android:text="@string/birth_date"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -213,7 +213,7 @@
                 android:id="@+id/radioButton_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Мужской"
+                android:text="@string/gender_male"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -226,7 +226,7 @@
                 android:id="@+id/radioButton_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Женский"
+                android:text="@string/gender_female"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
