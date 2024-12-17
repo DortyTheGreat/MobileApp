@@ -31,6 +31,8 @@ class Booking : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_booking)
 
+
+
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.navigation_home
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener { item ->

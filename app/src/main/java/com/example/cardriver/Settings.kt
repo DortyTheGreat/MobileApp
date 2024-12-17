@@ -24,6 +24,8 @@ class Settings : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
+
+
         findViewById<LinearLayout>(R.id.Rental_layout).setOnClickListener{
             startActivity(Intent(this, Rental1::class.java))
         }

@@ -8,12 +8,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
+import androidx.core.view.setPadding
+import androidx.core.view.updatePadding
 class Rental1 : AppCompatActivity() {
     private lateinit var button_reconnect: Button
 
@@ -22,6 +24,19 @@ class Rental1 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rental1)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(
+                left = v.paddingLeft,
+                top = systemBars.top,
+                right = v.paddingRight,
+                bottom = systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow2).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         button_reconnect = findViewById<Button>(R.id.button_start)
 

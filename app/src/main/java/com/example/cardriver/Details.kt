@@ -35,6 +35,10 @@ class Details : AppCompatActivity() {
             insets
         }
 
+        findViewById<ImageView>(R.id.backArrow2).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
+
         // car_adress, car_description, car_name, photo
 
 

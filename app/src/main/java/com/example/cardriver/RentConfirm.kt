@@ -33,6 +33,15 @@ class RentConfirm : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rent_confirm)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow2).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         try {
 
@@ -86,13 +95,19 @@ class RentConfirm : AppCompatActivity() {
 
             findViewById<Button>(R.id.button_start).setOnClickListener{
 
-                val rentDao = db.rentDao()
-                rentDao.Add(
-                    Global.current_session_email!!, intent.getIntExtra("car_id", 0),
-                    currentDateTime.toEpochSecond(ZoneOffset.UTC ),
-                    futureDateTime.toEpochSecond(ZoneOffset.UTC) )
+                try {
+                    val rentDao = db.rentDao()
+                    rentDao.Add(
+                        Global.current_session_email!!, intent.getIntExtra("car_id", 0),
+                        currentDateTime.toEpochSecond(ZoneOffset.UTC),
+                        futureDateTime.toEpochSecond(ZoneOffset.UTC)
+                    )
                     startActivity(Intent(this, RentDone::class.java))
+                }catch (e: Exception) {
+                    Snackbar.make(findViewById(R.id.main), e.toString(), Snackbar.LENGTH_SHORT).setTextMaxLines(10).show()
+                    return@setOnClickListener
 
+                }
             }
 
 

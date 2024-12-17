@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 import android.text.TextWatcher
 import android.text.Editable
+import android.widget.ImageView
+import androidx.core.view.updatePadding
 
 class Rental2 : AppCompatActivity() {
     private lateinit var button_reconnect: Button
@@ -25,6 +27,19 @@ class Rental2 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rental2)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(
+                left = v.paddingLeft,
+                top = systemBars.top,
+                right = v.paddingRight,
+                bottom = systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow3).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         button_reconnect = findViewById<Button>(R.id.button_start)
 

@@ -21,6 +21,16 @@ class ChangePassword : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_changepass)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
+
         R.id.textInputEditText_pass
 
         // Получаем главный layout с id main

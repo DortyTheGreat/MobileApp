@@ -14,6 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.example.cardriver.Register3.Companion.PASSPORT_PHOTO_REQUEST_CODE
 
 class Rental5 : AppCompatActivity() {
@@ -24,6 +25,19 @@ class Rental5 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rental5)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(
+                left = v.paddingLeft,
+                top = systemBars.top,
+                right = v.paddingRight,
+                bottom = systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow3).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         button_reconnect = findViewById<Button>(R.id.button_start)
 

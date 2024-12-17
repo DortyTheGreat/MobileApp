@@ -42,6 +42,10 @@ class Register3 : AppCompatActivity() {
         licenseNumberLayout = findViewById(R.id.textInputLayout6) // Layout для установки ошибок
         issueDateLayout = findViewById(R.id.textInputLayout7) // Layout для установки ошибок
 
+        findViewById<ImageView>(R.id.backArrow).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
+
         // Обработка нажатия на кнопку "Далее"
         buttonNext.setOnClickListener {
             val licenseNumber = licenseNumberInput.text.toString()

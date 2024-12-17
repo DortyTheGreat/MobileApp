@@ -10,14 +10,16 @@ import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.google.android.material.textfield.TextInputEditText
-
+import java.time.Year
 class Rental3 : AppCompatActivity() {
     private lateinit var button_reconnect: Button
 
@@ -26,6 +28,19 @@ class Rental3 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rental3)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(
+                left = v.paddingLeft,
+                top = systemBars.top,
+                right = v.paddingRight,
+                bottom = systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow3).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         button_reconnect = findViewById<Button>(R.id.button_start)
 
@@ -71,7 +86,7 @@ class Rental3 : AppCompatActivity() {
     fun check_data(){
         button_reconnect.setEnabled(false)
 
-        if (findViewById<TextInputEditText>(R.id.textInputEditText_year).getText()!!.length < 1) return
+        if ( !isValidYear(findViewById<TextInputEditText>(R.id.textInputEditText_year).getText().toString())) return
         if (findViewById<TextInputEditText>(R.id.textInputEditText_mark).getText()!!.length < 1) return
         if (findViewById<TextInputEditText>(R.id.textInputEditText_model).getText()!!.length < 1) return
         if (findViewById<TextInputEditText>(R.id.textInputEditText_mileage).getText()!!.length < 1) return
@@ -79,5 +94,23 @@ class Rental3 : AppCompatActivity() {
         //if (findViewById<Spinner>(R.id.spinner).get) return
 
         button_reconnect.setEnabled(true)
+    }
+
+    fun isValidYear(yearString: String?): Boolean {
+        // Проверка, что строка состоит только из цифр и длиной 4 символа
+        if (yearString == null) return false
+
+        if (!yearString.matches(Regex("\\d{4}"))) {
+            return false
+        }
+
+        // Преобразование строки в число
+        val year = yearString.toIntOrNull() ?: return false
+
+        // Получение текущего года
+        val currentYear = Year.now().value
+
+        // Проверка, что год в разумном диапазоне
+        return year in 1900..currentYear
     }
 }

@@ -17,6 +17,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.room.Room
 import com.example.cardriver.Register3.Companion.LICENSE_PHOTO_REQUEST_CODE
 import com.example.cardriver.Register3.Companion.PASSPORT_PHOTO_REQUEST_CODE
@@ -37,6 +38,19 @@ class Rental4 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_rental4)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updatePadding(
+                left = v.paddingLeft,
+                top = systemBars.top,
+                right = v.paddingRight,
+                bottom = systemBars.bottom)
+            insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow3).setOnClickListener {
+            onBackPressed() // Вернуться назад
+        }
 
         button_reconnect = findViewById<Button>(R.id.button_start)
 
@@ -69,7 +83,7 @@ class Rental4 : AppCompatActivity() {
                 val a = CarDao.Add(Global.location, Global.yearManufacture, Global.mark, Global.model,
                     Global.transmission, Global.mileage, Global.description, Global.current_session_email, Global.imagesB64)
 
-                Global.clear()
+
                 startActivity(Intent(this, Rental5::class.java))
 
 

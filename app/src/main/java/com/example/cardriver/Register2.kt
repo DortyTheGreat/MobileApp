@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.RadioButton
 import com.google.android.material.snackbar.Snackbar
 import java.time.format.DateTimeFormatter
@@ -25,6 +26,10 @@ class Register2 : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        findViewById<ImageView>(R.id.backArrow).setOnClickListener {
+            onBackPressed() // Вернуться назад
         }
 
 
